@@ -41,7 +41,7 @@ i {
 }
 
 .loading-screen {
-  z-index: 1000; 
+  z-index: 1000;
   display: flex;
 }
 
