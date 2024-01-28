@@ -271,43 +271,54 @@ function showSearchInputs() {
 
 async function searchByName(term) {
   closeSideNav();
-  rowData.innerHTML = "";
-  $(".inner-loading-screen").fadeIn(300);
+  $(".loading-screen").fadeIn(300); // Show loading screen
 
-  let response = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
-  );
-  response = await response.json();
+  try {
+    rowData.innerHTML = "";
 
-  if (response.meals) {
-    displayMeals(response.meals);
-  } else {
-    displayMeals([]);
+    let response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`
+    );
+    response = await response.json();
+
+    if (response.meals) {
+      displayMeals(response.meals);
+    } else {
+      displayMeals([]);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  } finally {
+    $(".loading-screen").fadeOut(300); // Hide loading screen regardless of success or failure
   }
-
-  $(".inner-loading-screen").fadeOut(300);
 }
 
 async function searchByFLetter(term) {
   closeSideNav();
-  rowData.innerHTML = "";
-  $(".inner-loading-screen").fadeIn(300);
+  $(".loading-screen").fadeIn(300); // Show loading screen
 
-  term = term || "a"; // Using the logical OR operator to set default value if term is an empty string
+  try {
+    term = term || "a"; // Using the logical OR operator to set the default value if term is an empty string
 
-  let response = await fetch(
-    `https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`
-  );
-  response = await response.json();
+    rowData.innerHTML = "";
 
-  if (response.meals) {
-    displayMeals(response.meals);
-  } else {
-    displayMeals([]);
+    let response = await fetch(
+      `https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`
+    );
+    response = await response.json();
+
+    if (response.meals) {
+      displayMeals(response.meals);
+    } else {
+      displayMeals([]);
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  } finally {
+    $(".loading-screen").fadeOut(300); // Hide loading screen regardless of success or failure
   }
-
-  $(".inner-loading-screen").fadeOut(300);
 }
+
 
 function showContacts() {
   rowData.innerHTML = `<div class="contact min-vh-100 d-flex justify-content-center align-items-center">
