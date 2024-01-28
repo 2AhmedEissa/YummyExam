@@ -271,7 +271,7 @@ function showSearchInputs() {
 
 async function searchByName(term) {
   closeSideNav();
-  // Show loading screen here for search results
+  
   $(".loading-screen").fadeIn(300);
 
   try {
@@ -290,14 +290,14 @@ async function searchByName(term) {
   } catch (error) {
     console.error("Error fetching data:", error);
   } finally {
-    // Hide loading screen after the search results are displayed
+    
     $(".loading-screen").fadeOut(300);
   }
 }
 
 async function searchByFLetter(term) {
   closeSideNav();
-  // Show loading screen here for search results
+  
   $(".loading-screen").fadeIn(300);
 
   try {
@@ -317,7 +317,7 @@ async function searchByFLetter(term) {
   } catch (error) {
     console.error("Error fetching data:", error);
   } finally {
-    // Hide loading screen after the search results are displayed
+    
     $(".loading-screen").fadeOut(300);
   }
 }
