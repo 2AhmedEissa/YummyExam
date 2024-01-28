@@ -271,7 +271,8 @@ function showSearchInputs() {
 
 async function searchByName(term) {
   closeSideNav();
-  $(".loading-screen").fadeIn(300); // Show loading screen
+  
+  $(".inner-loading-screen").fadeIn(300);
 
   try {
     rowData.innerHTML = "";
@@ -289,17 +290,18 @@ async function searchByName(term) {
   } catch (error) {
     console.error("Error fetching data:", error);
   } finally {
-    $(".loading-screen").fadeOut(300); // Hide loading screen regardless of success or failure
+    
+    $(".inner-loading-screen").fadeOut(300);
   }
 }
 
 async function searchByFLetter(term) {
   closeSideNav();
-  $(".loading-screen").fadeIn(300); // Show loading screen
+  
+  $(".inner-loading-screen").fadeIn(300);
 
   try {
-    term = term || "a"; // Using the logical OR operator to set the default value if term is an empty string
-
+    term = term || "a";
     rowData.innerHTML = "";
 
     let response = await fetch(
@@ -315,7 +317,8 @@ async function searchByFLetter(term) {
   } catch (error) {
     console.error("Error fetching data:", error);
   } finally {
-    $(".loading-screen").fadeOut(300); // Hide loading screen regardless of success or failure
+    
+    $(".inner-loading-screen").fadeOut(300);
   }
 }
 
